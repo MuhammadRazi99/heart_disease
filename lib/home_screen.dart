@@ -149,7 +149,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
 
         //   Submit Button
-          ElevatedButton(onPressed: (){}, child: const Text("Submit",))
+          SizedBox(
+              width: MediaQuery.of(context).size.width*0.7,
+              child: ElevatedButton(onPressed: (){}, child: const Text("Submit",)))
         ]
       ),
     );

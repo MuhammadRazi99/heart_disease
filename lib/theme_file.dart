@@ -17,7 +17,11 @@ ThemeData appTheme = ThemeData(
   ),
 
 
-  elevatedButtonTheme: ElevatedButtonThemeData(style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color(0xFF9B2948)),textStyle:MaterialStateProperty.all(const TextStyle(color: Colors.white,fontWeight: FontWeight.w600, fontSize: 14)))),
+  elevatedButtonTheme: ElevatedButtonThemeData(style: ButtonStyle(
+      backgroundColor: MaterialStateProperty.all(const Color(0xFF9B2948)),
+      foregroundColor: MaterialStateProperty.all(Colors.white),
+      textStyle:MaterialStateProperty.all(const TextStyle(fontWeight: FontWeight.w600, fontSize: 14)))),
+
   inputDecorationTheme: const InputDecorationTheme(
     filled: true,
     fillColor: Colors.white,
