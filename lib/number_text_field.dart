@@ -65,11 +65,13 @@ class _NumberTextFieldState extends State<NumberTextField> {
           isDense: true,
           contentPadding: widget.contentPadding.copyWith(right: 0),
           suffixIconConstraints: BoxConstraints(
-              maxHeight: widget.arrowsHeight, maxWidth: widget.arrowsWidth + widget.contentPadding.right),
+              maxHeight: widget.arrowsHeight,
+              maxWidth: widget.arrowsWidth + widget.contentPadding.right),
           suffixIcon: Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(widget.borderWidth), bottomRight: Radius.circular(widget.borderWidth))),
+                      topRight: Radius.circular(widget.borderWidth),
+                      bottomRight: Radius.circular(widget.borderWidth))),
               clipBehavior: Clip.antiAlias,
               alignment: Alignment.centerRight,
               margin: EdgeInsets.only(
@@ -77,22 +79,28 @@ class _NumberTextFieldState extends State<NumberTextField> {
                   right: widget.borderWidth,
                   bottom: widget.borderWidth,
                   left: widget.contentPadding.right),
-              child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                Expanded(
-                    child: Material(
-                        type: MaterialType.transparency,
-                        child: InkWell(
-                          onTap: _canGoUp ? () => _update(true) : null,
-                          child: Opacity(opacity: _canGoUp ? 1 : .5, child: const Icon(Icons.arrow_drop_up)),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Expanded(
+                        child: Material(
+                            type: MaterialType.transparency,
+                            child: InkWell(
+                              onTap: _canGoUp ? () => _update(true) : null,
+                              child: Opacity(
+                                  opacity: _canGoUp ? 1 : .5,
+                                  child: const Icon(Icons.arrow_drop_up)),
                             ))),
-                Expanded(
-                    child: Material(
-                        type: MaterialType.transparency,
-                        child: InkWell(
-                          onTap: _canGoDown ? () => _update(false) : null,
-                          child: Opacity(opacity: _canGoDown ? 1 : .5, child: const Icon(Icons.arrow_drop_down)),
+                    Expanded(
+                        child: Material(
+                            type: MaterialType.transparency,
+                            child: InkWell(
+                              onTap: _canGoDown ? () => _update(false) : null,
+                              child: Opacity(
+                                  opacity: _canGoDown ? 1 : .5,
+                                  child: const Icon(Icons.arrow_drop_down)),
                             ))),
-              ]))),
+                  ]))),
       maxLines: 1,
       onChanged: (value) {
         final intValue = int.tryParse(value);
@@ -103,7 +111,9 @@ class _NumberTextFieldState extends State<NumberTextField> {
 
   void _update(bool up) {
     var intValue = int.tryParse(_controller.text);
-    intValue == null ? intValue = 0 : intValue += up ? widget.step : -widget.step;
+    intValue == null
+        ? intValue = 0
+        : intValue += up ? widget.step : -widget.step;
     _controller.text = intValue.toString();
     _updateArrows(intValue);
     _focusNode.requestFocus();
@@ -128,7 +138,8 @@ class _NumberTextInputFormatter extends TextInputFormatter {
   _NumberTextInputFormatter(this.min, this.max);
 
   @override
-  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
     if (const ['-', ''].contains(newValue.text)) return newValue;
     final intValue = int.tryParse(newValue.text);
     if (intValue == null) return oldValue;

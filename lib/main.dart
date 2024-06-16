@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:heart_disease_detector/Theme_file.dart';
+import 'package:heart_disease_detector/theme_file.dart';
 import 'package:heart_disease_detector/home_screen.dart';
 
 void main() {
@@ -19,4 +19,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
