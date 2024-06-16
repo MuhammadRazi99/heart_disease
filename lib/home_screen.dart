@@ -184,9 +184,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
         // ST Depression
         const Text("ST Depression induced by Exercise"),
-        NumberTextField(
-          controller: _oldPeak,
-        ),
+        TextField(controller: _oldPeak,keyboardType: TextInputType.number,),
+        // NumberTextField(
+        //   controller: _oldPeak,
+        // ),
 
         //   Slope of Peak Exercise
         const Text("Slope of Peak Exercise"),
