@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:heart_disease_detector/model.dart';
 import 'package:heart_disease_detector/backend.dart';
 import 'package:heart_disease_detector/number_text_field.dart';
+import 'package:heart_disease_detector/output_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -42,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Form Fill"),
-        centerTitle: true,
+        // centerTitle: true,
       ),
       body: ListView(children: [
         //  Age
@@ -289,10 +290,13 @@ class _HomeScreenState extends State<HomeScreen> {
     );
     try {
       final result = await predictHeartDisease(heartModel.toMap());
-      final message = result == 1
-          ? 'Our prediction indicates that you might have a heart disease. Please consult with a doctor!'
-          : 'Our prediction indicates that you are unlikely to have a heart disease. Stay healthy!';
-      dialog(context, message);
+      // final message = result == 1
+      //     ? 'Our prediction indicates that you might have a heart disease. Please consult with a doctor!'
+      //     : 'Our prediction indicates that you are unlikely to have a heart disease. Stay healthy!';
+      // dialog(context, message);
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => OutputScreen(result:result),
+          ));
       debugPrint('Prediction: $result');
     } catch (e) {
       const message =
